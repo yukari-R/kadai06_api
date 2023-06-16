@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>diary</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <h1>今を記録しよう</h1>
+    <div id="al_flexbox">
+        <div id="in_box">
+            <div id="td_in_box">
+                <input type="date" id="date" value="2023-06-01"><textarea id="title"></textarea>
+            </div>
+            <div class="text_in_box">
+                <textarea id="text"></textarea>
+            </div>
+            <div class="img_in_box">
+                <input type="file" id="file">
+            </div>
+            <div id="send">送信</div>
+        </div>
+        <div id="myMap"></div>
+    </div>
+    <table id="list">
+        <!-- ここに追加データが挿入される -->
+    </table>
+
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script src='https://www.bing.com/api/maps/mapcontrol?callback=GetMap&key=****************' async defer></script>
+<script>
+
+
+
+function mapsInit(position) {
+        console.log(position, '取得');
+        const lat = position.coords.latitude;
+        const lon = position.coords.longitude;
+        let map = new Microsoft.Maps.Map('#myMap', {
+        center: new Microsoft.Maps.Location(lat, lon), //Location center position
+        mapTypeId: Microsoft.Maps.MapTypeId.grayscale, //Type: [load, aerial,canvasDark,canvasLight,birdseye,grayscale,streetside]
+        zoom: 10  //Zoom:1=zoomOut, 20=zoomUp[ 1~20 ]
+        })
+        console.log("マップ取得")
+        
+
+    $("#send").on("click", function click(){
+        const key = $("#date").val();
+        // コンソールログを使ってKeyの中身をチェックする
+        console.log(key,"keyの中身");
+    
+        const value1 =$("#title").val();
+        console.log(value1,"value1の中身");
+
+        const value2 =$("#text").val();
+        console.log(value2,"value2の中身");
+
+        console.log(lat);
+        console.log(lon);
+
+    const datalist = {
+            value1,
+            value2,
+            lat,
+            lon,
+        }
+        localStorage.setItem(key,JSON.stringify(datalist));
+
+    const result = JSON.parse(localStorage.getItem(key));
+    console.log(result);
+
+    })}
+
+        
+        
+
+    
+    function mapsError(error) {
+    let e = "";
+      if (error.code == 1) { //1＝位置情報取得が許可されてない（ブラウザの設定）
+        e = "位置情報が許可されてません";
+    }
+      if (error.code == 2) { //2＝現在地を特定できない
+        e = "現在位置を特定できません";
+    }
+      if (error.code == 3) { //3＝位置情報を取得する前にタイムアウトになった場合
+        e = "位置情報を取得する前にタイムアウトになりました";
+    }
+    alert("エラー：" + e);
+    };
+
+
+function GetMap() {navigator.geolocation.getCurrentPosition(mapsInit, mapsError);
+}
+
+
+for(let i=0; i<localStorage.length; i++){
+        const key   = localStorage.key(i);
+        const result = JSON.parse(localStorage.getItem(key));
+        const text = result["value1"];
+        const title = result["value2"];
+        const lat = result["lat"];
+        const lon = result["lon"];
+        console.log(text,title,lat,lon);
+    
+    
+    }
+
+</script>
+
+</body>
+</html>

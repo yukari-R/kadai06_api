@@ -1,0 +1,107 @@
+
+h1{
+    font-family: 游ゴシック体;
+    font-weight: bold;
+    font-size: 18px;
+    text-align: center;
+    margin-top: 50px;
+}
+
+#al_flexbox{
+    margin: 0 auto;
+    margin-top: 50px;
+    width: 1000px;
+    display: flex;
+}
+
+#in_box{
+    width: 400px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+#td_in_box{
+    margin-bottom: 30px;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+}
+
+#date{
+    margin-right: 30px;
+    width: 120px;
+}
+
+#title{
+    width: 200px;
+    height: 20px;
+}
+
+#text_in_box{
+    width: 360px;
+    margin: 0 auto;
+}
+
+#text{
+    width: 340px;
+    height: 100px;
+    font-family: 游ゴシック体;
+    font-size: 14px;
+    margin-bottom: 30px;
+    padding: 10px;
+}
+
+#file{
+    width: 360px;
+    margin: 0 auto;
+    margin-bottom: 30px;
+}
+
+#send{
+    list-style-type:none;
+    border: 1px solid white;
+    background-color: gray;
+    display: block;
+    cursor: pointer;
+    color: white;
+    width: 300px;
+    height: 30px;
+    text-align: center;
+    font-size: 14px;
+    font-family: 游ゴシック体;
+    border-radius: 10px;
+    margin: 0 auto;
+    line-height: 30px;
+}
+#send:hover{
+    background: #bab4b4;
+    color:#fff;
+}
+
+#myMap{
+    width: 580px;
+    height: 580px;
+    background-color: aliceblue;
+}
+
+table{
+    margin: 0 auto;
+    margin-top: 80px;
+    border:1px solid rosybrown;
+    width: 600px;
+    margin-bottom: 80px;
+    
+}
+th{
+    width:30%;
+    font-size: 14px;
+    background-color:#bab4b4;
+    border-bottom: 1px solid rosybrown;
+    font-family: 游ゴシック体;
+}
+td{
+    font-size: 14px;
+    background-color: #bab4b4;
+    border-bottom: 1px solid rosybrown;
+    font-family: 游ゴシック体;
+}
